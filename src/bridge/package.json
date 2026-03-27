@@ -1,0 +1,14 @@
+{
+  "name": "talk-bot-bridge",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Local bridge for OpenAI Realtime + Unreal MetaHuman podcast demo.",
+  "type": "commonjs",
+  "scripts": {
+    "start": "node src/index.js",
+    "check": "node --check src/index.js"
+  },
+  "dependencies": {
+    "ws": "^8.18.0"
+  }
+}
