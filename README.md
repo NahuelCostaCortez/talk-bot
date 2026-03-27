@@ -9,7 +9,7 @@ El sistema se divide en dos piezas:
 - `talk-bot`: bridge local en Node.js que conecta microfono, OpenAI Realtime y Unreal.
 - `unreal`: proyecto Unreal.
 
-## 2. Requisitos previos
+## 2. Requisitos
 
 ### Sistema operativo
 
@@ -32,6 +32,9 @@ El sistema se divide en dos piezas:
   - Windows 111 SDK
   - herramientas de C++ para CMake/MSBuild
 
+### Carpeta content
+Extraer la carpeta en el directorio unreal/
+
 ### Plugins de Unreal que este proyecto usa
 
 - `LiveLink`
@@ -41,6 +44,13 @@ El sistema se divide en dos piezas:
 - `MetaHuman`
 - `MetaHumanCoreTech`
 - `MetaHumanLiveLink`
+
+Para instalarlos:
+- Doble click sobre unreal/MyProject.uproject
+- Si salen mensajes de recompilar o actualizar proyecto dale a Sí.
+- En la barra superior ve a Edit->Plugins, busca cada uno de estos y asegúrate de que estén marcados.
+
+
 
 ### Audio y utilidades externas
 
@@ -69,8 +79,7 @@ Si `npm` local falla por el entorno de Windows, usa el wrapper incluido:
 
 ### 3.2 Configurar variables
 
-1. Copia `bridge/.env.example` a `bridge/.env` si no existe.
-2. Rellena al menos:
+1. En `src/bridge/.env` rellena al menos:
 
 ```env
 OPENAI_API_KEY=tu_clave
@@ -82,7 +91,7 @@ TB_INPUT_SAMPLE_RATE=24000
 TB_OUTPUT_SAMPLE_RATE=24000
 TB_TURN_DETECTION=semantic_vad
 ```
-- Si quieres probar otra voz, cambiala aqui sin tocar el codigo.
+- Si quieres probar otra voz, cambia OPENAI_VOICE.
 
 ### 3.3 Preparar la captura de microfono
 
@@ -92,7 +101,7 @@ Revisa `bridge/capture-mic.cmd`. Este script:
 - abre un dispositivo DirectShow concreto
 - convierte el microfono a `PCM16`, mono, `24000 Hz`
 
-Debes actualizar:
+Para usarlo has de actualizar:
 
 - la ruta de `ffmpeg.exe`
 - el nombre o id del dispositivo de entrada
